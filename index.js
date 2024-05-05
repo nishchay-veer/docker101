@@ -34,12 +34,14 @@ const redisStore = new RedisStore({
 app.use(
    session({
      store: redisStore,
-     secret: "SESSION_SECRET",
-     resave: false,
-     saveUninitialized: false,
+     secret: SESSION_SECRET,
      cookie: {
        secure: false,
-    },
+       resave: false,
+       saveUninitialized: false,
+       httpOnly: true,
+       maxAge: 60000,
+     },
   })
 );
 
